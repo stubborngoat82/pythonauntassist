@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>User Contacts</h2>
+<a href="{% url 'user_contact_create' %}">Add New User Contact</a>
+<ul>
+    {% for contact in contacts %}
+        <li>
+            <strong>{{ contact.contact_user.username }}</strong>
+            <p>Added on: {{ contact.created_at }}</p>
+        </li>
+    {% empty %}
+        <li>No user contacts found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

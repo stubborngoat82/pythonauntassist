@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Delete External Contact</h2>
+<p>Are you sure you want to delete {{ contact.first_name }} {{ contact.last_name }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+    <a href="{% url 'external_contact_list' %}">Cancel</a>
+</form>
+{% endblock %}

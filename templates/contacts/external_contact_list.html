@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>External Contacts</h2>
+<a href="{% url 'external_contact_create' %}">Add New External Contact</a>
+<ul>
+    {% for contact in contacts %}
+        <li>
+            <strong>{{ contact.first_name }} {{ contact.last_name }}</strong> - {{ contact.phone_number }}
+            <a href="{% url 'external_contact_update' contact.pk %}">Edit</a>
+            <a href="{% url 'external_contact_delete' contact.pk %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No external contacts found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -13,6 +13,16 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'dashboard' %}"></a></li>
+          <div class="dropdown">
+            <button class="dropbtn">
+                Contacts<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <li><a href="{% url 'external_contact_list' %}">External Contacts</a></li>
+                <li><a href="{% url 'user_contact_list' %}">Internal Contacts</a></li>
+            </div>
+          </div>
+      
           <li><a href="{% url 'profile_view' %}">Profile</a></li>
           <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
