@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2>{{ user.username }}'s Profile</h2>
+  <p><strong>First Name:</strong> {{ user.first_name }}</p>
+  <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Role:</strong> {{ user.get_role_display }}</p>
+  <p><strong>Bio:</strong> {{ user.profile.bio }}</p>
+  {% if user.profile.avatar %}
+    <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="max-width:200px;">
+  {% else %}
+    <img src="{% static 'images/default_avatar.png' %}" alt="Default Avatar" style="max-width:200px;">
+  {% endif %}
+  <!-- Add more profile fields as needed -->
+  <p><a href="{% url 'profile_edit' %}">Edit Profile</a></p>
+{% endblock %}

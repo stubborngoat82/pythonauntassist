@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Canned Message{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{% if object %}Edit{% else %}Add{% endif %} Canned Message</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">{% if object %}Update{% else %}Create{% endif %}</button>
+    </form>
+    <a href="{% url 'canned_message_list' %}">Back to Canned Messages</a>
+</div>
+{% endblock %}

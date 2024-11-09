@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Send Message{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Send a Message</h2>
+    <form method="post" id="messageForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_recipient">Recipient:</label>
+            {{ form.recipient }}
+        </div>
+        <div class="form-group">
+            <label for="id_category">Category:</label>
+            {{ form.category }}
+        </div>
+        <div class="form-group">
+            <label for="id_canned_message">Canned Message:</label>
+            {{ form.canned_message }}
+        </div>
+        <div class="form-group">
+            <label for="id_text">Message Text:</label>
+            {{ form.text }}
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+    <a href="{% url 'message_list' %}">Back to Messages</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const categorySelect = document.getElementById('id_category');
+        const cannedMessageSelect = document.getElementById('id_canned_message');
+
+        categorySelect.addEventListener('change', function() {
+            const category = this.value;
+            fetch(`/messages/canned_messages/${category}/`)
+                .then(response => response.json())
+                .then(data => {
+                    cannedMessageSelect.innerHTML = '<option value="">Select a canned message</option>';
+                    data.forEach(message => {
+                        const option = document.createElement('option');
+                        option.value = message.id;
+                        option.textContent = message.text;
+                        cannedMessageSelect.appendChild(option);
+                    });
+                });
+        });
+    });
+</script>
+{% endblock %}

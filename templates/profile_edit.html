@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2>Edit Your Profile</h2>
+  {% if messages %}
+    {% for message in messages %}
+      <p style="color:green;">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>User Information</h3>
+    {{ user_form.as_p }}
+    <h3>Profile Information</h3>
+    {{ profile_form.as_p }}
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}

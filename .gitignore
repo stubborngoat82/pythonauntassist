@@ -1,0 +1,36 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+env/
+venv/
+ENV/
+VENV/
+env.bak/
+venv.bak/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+
+# Media and static files
+media/
+staticfiles/
+
+# IDE files
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+
+# Secret settings
+.env
+

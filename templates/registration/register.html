@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h2>Register</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+    {{ form.username }}
+
+    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+    {{ form.email }}
+
+    <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+    {{ form.first_name }}
+
+    <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+    {{ form.last_name }}
+
+    <label for="{{ form.role.id_for_label }}">{{ form.role.label }}</label>
+    {{ form.role }}
+
+    <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+    {{ form.password1 }}
+
+    <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+    {{ form.password2 }}
+
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

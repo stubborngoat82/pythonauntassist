@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Messages</h2>
+<ul>
+    {% for message in messages %}
+        <li>{{ message.sender.username }}: {{ message.text }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'message_send' %}">Send Message</a>
+{% endblock %}

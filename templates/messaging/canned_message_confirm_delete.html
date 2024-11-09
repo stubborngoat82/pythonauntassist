@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Canned Message{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Are you sure you want to delete this canned message?</h2>
+    <p><strong>{{ object.get_category_display }}:</strong> {{ object.text }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a href="{% url 'canned_message_list' %}">Cancel</a>
+</div>
+{% endblock %}

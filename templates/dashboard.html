@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2>Welcome to Your Dashboard, {{ user.username }}!</h2>
+  <!-- Add dashboard content here -->
+  <p><a href="{% url 'profile_view' %}">View Your Profile</a></p>
+  <p><a href="{% url 'profile_edit' %}">Edit Your Profile</a></p>
+  <!-- Include other dashboard components as needed -->
+{% endblock %}

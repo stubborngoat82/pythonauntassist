@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Canned Messages{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Canned Messages</h2>
+    <a href="{% url 'canned_message_add' %}" class="btn btn-primary">Add New Canned Message</a>
+    <ul>
+        {% for message in canned_messages %}
+            <li>
+                <strong>{{ message.get_category_display }}:</strong> {{ message.text }}
+                <a href="{% url 'canned_message_edit' message.id %}">Edit</a>
+                <a href="{% url 'canned_message_delete' message.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
